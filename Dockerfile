@@ -7,5 +7,5 @@ RUN pip install -r /opt/requirements.txt
 
 RUN mkdir -p /opt/data
 
-CMD [ "python", "/opt/pointsincountries6.py" ]
+CMD [ "python", "/opt/pointsinpolygons.py" ]
 

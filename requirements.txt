@@ -2,4 +2,6 @@ shapely
 fiona
 boto3
 numpy
+pathlib2
+pandas
 
