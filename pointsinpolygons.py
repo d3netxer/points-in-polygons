@@ -52,7 +52,7 @@ def main(args=None):
 	#KEY2="Global_LSIB_Polygons_Detailed/"
 	BUCKET_NAME2="hiu-data"
 
-	my_bucket = s3.Bucket('hiu-data')
+	my_bucket = s3.Bucket('hiu-lsib')
 
 	my_file2 = Path("/opt/Global_LSIB_Polygons_Detailed.shp")
         if not my_file2.is_file():
