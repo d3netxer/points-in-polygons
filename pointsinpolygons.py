@@ -1,7 +1,6 @@
 import csv
 
 from shapely.geometry import Point, shape
-from shapely import speedups
 import shapely.vectorized
 import numpy as np
 import pandas as pd
@@ -11,7 +10,6 @@ from shapely.prepared import prep
 #from numpy import genfromtxt
 
 import fiona
-
 import boto3
 import botocore
 
@@ -19,12 +17,9 @@ import botocore
 import multiprocessing as mp
 
 #from collections import Counter
-
 import time
 import os
 from pathlib2 import Path
-
-speedups.enable()
 
 def main(args=None):
 
@@ -76,7 +71,6 @@ def main(args=None):
 	print 'finished downloading country polygon file'
 
 
-
 	#https://stackoverflow.com/questions/18259393/numpy-loading-csv-too-slow-compared-to-matlab
         #d = pd.read_csv("my_local_csv.csv", delimiter=",", usecols=["building_or_hwy","lat","lon"]).values
 	d = pd.read_csv("my_local_csv.csv", delimiter=",", usecols=["building_or_hwy","lat","lon"])
@@ -92,9 +86,6 @@ def main(args=None):
         building_d = d[d['building_or_hwy'].str.match('building')]
         print building_d
 
-	#x=d[:,1]
-        #y=d[:,0]
-
 	highway_x=highway_d['lon']
 	highway_y=highway_d['lat']
 
@@ -103,6 +94,8 @@ def main(args=None):
 
         #testing a single country
         '''
+	x=d[:,1]
+        y=d[:,0]
         Uganda_mask2 = shapely.vectorized.contains(Uganda_shp_geom, x, y)
         print 'finished Uganda_mask2'
         print Uganda_mask2
@@ -132,8 +125,7 @@ def main(args=None):
                                 #print buildings_sum_country_contains
                                 writer2.writerow([country_name,buildings_sum_country_contains,highways_sum_country_contains])
 
-	print("Pool time took:",time.time()-t1)
-
+	print("Processing time took:",time.time()-t1)
 
 
 if __name__ == "__main__":
