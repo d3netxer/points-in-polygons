@@ -31,5 +31,23 @@ now once you are inside the docker container you can run the script manually:
 $python pointsinpolygons.py
 ```
 
+### Configuration
+
+The intent is to creat a cronjob that will run the docker run command evertime the ec2 instance reboots or starts-up. 
+
+I had difficulty getting crontab to work running docker with sudo. Therefore I had to add the default ubuntu user to the docker group:
+
+
+
+Edit your crontab file with this command:   ```crontab -e```
+
+and add this line to itL
+```
+@reboot sh /opt/points-in-polygons/startup_script.sh
+```
+
+It will reference the startup_script.sh in this repo. The startup script runs docker in the background and will write the output file in the data directory.
+
+
 ### metrics
 Processed over 2 million points in all worldwide country polygons in 237 seconds on a t2.medium instance.
