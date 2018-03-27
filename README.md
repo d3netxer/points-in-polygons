@@ -26,3 +26,7 @@ This example command mounts the ~/.aws directory AND set the $HOME environment v
 $ sudo docker run -it -e "HOME=/home" -v $HOME/.aws:/home/.aws -v /home/vagrant/repos/docker_python_practice:/opt points-in-polygons-image /bin/bash
 ```
 
+now once you are inside the docker container you can run the script manually:
+```
+$python pointsinpolygons.py
+```
