@@ -1,5 +1,16 @@
 # Points-in-Polygons
 
+Tested with Ubuntu 16.04.
+
+## Dependencies
+
+### Install Docker CE for Ubuntu:
+https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1
+
+### Install AWS CLI:
+#### Install PIP: ```sudo apt install python-pip```
+#### Install AWS CLI: ```pip install awscli --upgrade --user```
+
 This python app counts the number of points inside polygons. It uses shapely, including making use of the shapely vectorize module. This app is built using docker.
 
 build the docker container:
