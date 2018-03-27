@@ -17,7 +17,6 @@ build the docker container:
 ```
 $ sudo docker build -t points-in-polygons-image .
 
-$ sudo docker run -it points-in-polygons-image
 ```
 
 This link (https://blog.bekt.net/p/docker-aws-credentials/) suggested for development to configure the AWS creds and then mounting the ~/.aws directory AND set the $HOME environment variable. 
