@@ -35,9 +35,13 @@ $python pointsinpolygons.py
 
 The intent is to creat a cronjob that will run the docker run command evertime the ec2 instance reboots or starts-up. 
 
-I had difficulty getting crontab to work running docker with sudo. Therefore I had to add the default ubuntu user to the docker group:
+I had difficulty getting crontab to work running docker with sudo. Therefore I had to add the default ubuntu user to the docker group with this command:
 
+```
+sudo usermod -aG docker ubuntu
+```
 
+Then you may need to log out and back in.
 
 Edit your crontab file with this command:   ```crontab -e```
 
