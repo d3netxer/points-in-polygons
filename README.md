@@ -30,3 +30,6 @@ now once you are inside the docker container you can run the script manually:
 ```
 $python pointsinpolygons.py
 ```
+
+### metrics
+Processed over 2 million points in all worldwide country polygons in 237 seconds on a t2.medium instance.
