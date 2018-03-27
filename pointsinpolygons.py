@@ -108,7 +108,7 @@ def main(args=None):
 	print num_procs
         t1=time.time()
 
-	with open('output.csv', 'wb') as csvfile:
+	with open('/opt/data/output.csv', 'w+') as csvfile:
                 writer2 = csv.writer(csvfile)
                 #write header row
                 writer2.writerow(['country_name','building_count','highway_count'])
