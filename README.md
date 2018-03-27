@@ -1,4 +1,4 @@
-# Points-in-Polygons
+# points-in-polygons
 
 Tested with Ubuntu 16.04.
 
