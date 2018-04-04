@@ -21,14 +21,12 @@ import time
 import os
 from pathlib2 import Path
 
-import sys
-
 def main(args=None):
 
 	print 'starting script'
 
 
-	TEST_KEY="2018-03-12/world_features.csv"
+	KEY="2018-03-12/world_features.csv"
 	BUCKET_NAME="aws-athena-mapgive-query-results"
 
 	s3 = boto3.resource('s3') 
@@ -37,40 +35,17 @@ def main(args=None):
 	#for bucket in s3.buckets.all():
 		#print(bucket.name)
 
-	s3_client = boto3.client('s3')
+	# don't download file if it exists locally
+	my_file1 = Path("/opt/my_local_csv.csv")
+	if not my_file1.is_file():
 
-	get_last_modified = lambda obj: int(obj['LastModified'].strftime('%s'))
-
-	objs = s3_client.list_objects_v2(Bucket=BUCKET_NAME)['Contents']
-	obj_key_list = [obj['Key'] for obj in sorted(objs, key=get_last_modified, reverse=True)]
-
-	#find the first entry in obj_key_list that ends with 'csv'
-	for name in obj_key_list:
-		print(name)
-		if name.endswith('.csv'):
-			KEY = name
-			print(KEY)
-			break 
-
-
-	print('print obj_key_list')
-	print(obj_key_list)
-
-	#exit early for testing purposes
-	#sys.exit()
-
-
-	#if testing script, don't download file if it exists locally
-	#my_file1 = Path("/opt/my_local_csv.csv")
-	#if not my_file1.is_file():
-
-	try:
-		s3.Bucket(BUCKET_NAME).download_file(KEY, 'my_local_csv.csv')
-	except botocore.exceptions.ClientError as e:
-		if e.response['Error']['Code'] == "404":
-			print("The object does not exist.")
-		else:
-			raise
+		try:
+			s3.Bucket(BUCKET_NAME).download_file(KEY, 'my_local_csv.csv')
+		except botocore.exceptions.ClientError as e:
+			if e.response['Error']['Code'] == "404":
+				print("The object does not exist.")
+			else:
+				raise
 
 	print 'finished downloading mapgive features file'
 
@@ -133,7 +108,7 @@ def main(args=None):
 	print num_procs
         t1=time.time()
 
-	with open('/opt/data/mapgive_metrics.csv', 'w+') as csvfile:
+	with open('/opt/data/output.csv', 'w+') as csvfile:
                 writer2 = csv.writer(csvfile)
                 #write header row
                 writer2.writerow(['country_name','building_count','highway_count'])
@@ -151,34 +126,6 @@ def main(args=None):
                                 writer2.writerow([country_name,buildings_sum_country_contains,highways_sum_country_contains])
 
 	print("Processing time took:",time.time()-t1)
-
-
-	KEY="/opt/data/mapgive_metrics.csv"
-        BUCKET_NAME="mapgive-metrics"
-
-        s3 = boto3.resource('s3')
-
-        #Print out bucket names
-        #for bucket in s3.buckets.all():
-                #print(bucket.name)
-
-        # don't upload file if it exists 
-        my_file2 = Path("/opt/data/mapgive_metrics.csv")
-        
-	#if not my_file2.is_file():
-
-	try:
-		s3.Bucket(BUCKET_NAME).upload_file(KEY, 'mapgive_metrics.csv')
-		#make file public
-		object_acl = s3.ObjectAcl('mapgive-metrics','mapgive_metrics.csv')
-		response = object_acl.put(ACL='public-read')
-	except botocore.exceptions.ClientError as e:
-		if e.response['Error']['Code'] == "404":
-			print("The object does not exist.")
-		else:
-			raise
-
-        print 'finished uploading mapgive metrics to s3'
 
 
 if __name__ == "__main__":
