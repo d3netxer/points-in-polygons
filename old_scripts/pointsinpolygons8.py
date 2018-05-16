@@ -23,11 +23,9 @@ from pathlib2 import Path
 
 import sys
 
-print
-
 def main(args=None):
 
-    print('starting script with new changes')
+    print 'starting script'
 
 
     TEST_KEY="2018-03-12/world_features.csv"
@@ -63,16 +61,16 @@ def main(args=None):
 
 
     #if testing script, don't download file if it exists locally
-    my_file1 = Path("/opt/my_local_csv.csv")
+    #my_file1 = Path("/opt/my_local_csv.csv")
+    #if not my_file1.is_file():
 
-    if not my_file1.is_file():
-        try:
-            s3.Bucket(BUCKET_NAME).download_file(KEY, 'my_local_csv.csv')
-        except botocore.exceptions.ClientError as e:
-            if e.response['Error']['Code'] == "404":
-                print("The object does not exist.")
-            else:
-                raise
+    try:
+        s3.Bucket(BUCKET_NAME).download_file(KEY, 'my_local_csv.csv')
+    except botocore.exceptions.ClientError as e:
+        if e.response['Error']['Code'] == "404":
+            print("The object does not exist.")
+        else:
+            raise
 
     print 'finished downloading mapgive features file'
 
@@ -95,6 +93,7 @@ def main(args=None):
                 raise
 
     print 'finished downloading country polygon file'
+
 
     #https://stackoverflow.com/questions/18259393/numpy-loading-csv-too-slow-compared-to-matlab
     #d = pd.read_csv("my_local_csv.csv", delimiter=",", usecols=["building_or_hwy","lat","lon"]).values
@@ -140,17 +139,13 @@ def main(args=None):
 
         with fiona.collection('Global_LSIB_Polygons_Simplified.shp','r') as input:
             for polygon in input:
-                country_name = polygon['properties']['COUNTRY_NA']
+                country_name  = polygon['properties']['COUNTRY_NA']
                 country_shp_geom = shape(polygon['geometry'])
                 print country_name
                 buildings_country_contains = shapely.vectorized.contains(country_shp_geom, building_x, building_y)
                 highways_country_contains = shapely.vectorized.contains(country_shp_geom, highway_x, highway_y)
                 buildings_sum_country_contains = np.sum(buildings_country_contains)
                 highways_sum_country_contains = np.sum(highways_country_contains)
-
-                #print("testing")
-                #print buildings_country_contains
-
                 #print buildings_sum_country_contains
                 writer2.writerow([country_name,buildings_sum_country_contains,highways_sum_country_contains])
 
@@ -169,18 +164,18 @@ def main(args=None):
     # don't upload file if it exists
     my_file2 = Path("/opt/data/mapgive_metrics.csv")
 
-    if not my_file2.is_file():
+    #if not my_file2.is_file():
 
-        try:
-            s3.Bucket(BUCKET_NAME).upload_file(KEY, 'mapgive_metrics.csv')
-            #make file public
-            object_acl = s3.ObjectAcl('mapgive-metrics','mapgive_metrics.csv')
-            response = object_acl.put(ACL='public-read')
-        except botocore.exceptions.ClientError as e:
-            if e.response['Error']['Code'] == "404":
-                print("The object does not exist.")
-            else:
-                raise
+    try:
+        s3.Bucket(BUCKET_NAME).upload_file(KEY, 'mapgive_metrics.csv')
+        #make file public
+        object_acl = s3.ObjectAcl('mapgive-metrics','mapgive_metrics.csv')
+        response = object_acl.put(ACL='public-read')
+    except botocore.exceptions.ClientError as e:
+        if e.response['Error']['Code'] == "404":
+            print("The object does not exist.")
+        else:
+            raise
 
     print 'finished uploading mapgive metrics to s3'
 

@@ -1,230 +1,230 @@
 country_name,building_count,highway_count
 Abyei (disp),0,0
-Afghanistan,54,116
+Afghanistan,0,0
 Akrotiri (UK),0,0
 Aksai Chin (disp),0,0
-Albania,801,2
-Algeria,1,0
+Albania,0,0
+Algeria,0,0
 American Samoa (US),0,0
 Antarctica,0,0
 Antigua & Barbuda,0,0
-Argentina,1,0
+Argentina,0,0
 Andorra,0,0
-Angola,73,13
+Angola,0,0
 Anguilla (UK),0,0
 Armenia,0,0
 Aruba (Neth),0,0
 Ashmore & Cartier Is (Aus),0,0
-Australia,192,5
-Austria,7,1
+Australia,0,0
+Austria,0,0
 Azerbaijan,0,0
 "Bahamas, The",0,0
-Barbados,0,1
+Barbados,0,0
 Belarus,0,0
-Belgium,69,0
-Belize,1,0
+Belgium,0,0
+Belize,0,0
 Bermuda (UK),0,0
 Bhutan,0,0
-Bolivia,118,9
+Bolivia,0,0
 Bosnia & Herzegovina,0,0
-Botswana,2918,554
+Botswana,1,1
 Bouvet Island (Nor),0,0
 Br Virgin Is (UK),0,0
 Cocos (Keeling) Is (Aus),0,0
-Colombia,2164,188
+Colombia,0,0
 Comoros,0,0
 Br Virgin Islands (UK),0,0
 Brazil,0,0
 Christmas I (Aus),0,0
 Clipperton I (Fr),0,0
-"Congo, Dem Rep of the",99696,12686
+"Congo, Dem Rep of the",208,61
 "Congo, Rep of the",0,0
 Cook Is (NZ),0,0
 British Indian Oc Terr (UK),0,0
 Brunei,0,0
 Bulgaria,0,0
-Burkina Faso,2185,52
-Burundi,41,11
+Burkina Faso,2,0
+Burundi,0,0
 Cabo Verde,0,0
-Cambodia,4,0
-Cameroon,41,17
-Canada,367,34
+Cambodia,0,0
+Cameroon,0,0
+Canada,0,0
 Coral Sea Is (Aus),0,0
 Costa Rica,0,0
-Cote d'Ivoire,8510,833
-Croatia,0,4
+Cote d'Ivoire,19,3
+Croatia,0,0
 Cuba,0,0
 Cayman Is (UK),0,0
-Central African Rep,10415,1564
+Central African Rep,35,8
 CH-IN (disp),0,0
-Chad,173,1
-Chile,1,0
-China,111,24
+Chad,1,0
+Chile,0,0
+China,2,0
 Curacao (Neth),0,0
-Cyprus,63,14
-Czechia,1,0
+Cyprus,0,0
+Czechia,0,0
 Demchok (disp),0,0
-Denmark,0,1
+Denmark,0,0
 Dhekelia (UK),0,0
-Djibouti,9,0
+Djibouti,0,0
 Dominica,0,0
 Dominican Republic,0,0
 Dragonja (disp),0,0
 Dramana-Shakatoe (disp),0,0
-Ecuador,23059,1097
-Egypt,4,0
-El Salvador,100,4
+Ecuador,31,5
+Egypt,0,0
+El Salvador,0,0
 Equatorial Guinea,0,0
-Eritrea,4,0
+Eritrea,0,0
 Estonia,0,0
-Ethiopia,13229,1703
+Ethiopia,25,3
 Falkland Islands (UK) (disp),0,0
 Faroe Is (Den),0,0
-Fiji,7582,1146
-Finland,29,0
+Fiji,42,10
+Finland,0,0
 Fr S & Antarctic Lands (Fr),0,0
-France,57,5
+France,0,0
 French Guiana (Fr),0,0
 French Polynesia (Fr),0,0
 Gabon,0,0
-"Gambia, The",2391,708
+"Gambia, The",7,4
 Montserrat (UK),0,0
-Morocco,37,91
-Mozambique,56199,5472
-Namibia,34,3
+Morocco,0,2
+Mozambique,82,11
+Namibia,0,0
 Gaza Strip (disp),0,0
 Georgia,0,0
-Germany,28,60
-Ghana,1074,30
+Germany,0,0
+Ghana,0,0
 Gibraltar (UK),0,0
 Greece,0,0
 Greenland (Den),0,0
 Grenada,0,0
 Guadeloupe (Fr),0,0
 Nauru,0,0
-Guam (US),3,0
-Guatemala,2610,335
+Guam (US),0,0
+Guatemala,7,2
 Navassa I (US),0,0
-Nepal,172126,7786
-Netherlands,14,43
+Nepal,193,41
+Netherlands,0,0
 Guernsey (UK),0,0
-Guinea,1459,201
-Guinea-Bissau,7,0
+Guinea,4,0
+Guinea-Bissau,0,0
 Guyana,0,0
-Haiti,35179,1719
+Haiti,64,6
 Jersey (UK),0,0
-Jordan,6,0
+Jordan,0,0
 Kalapani (disp),0,0
 Heard I & McDonald Is (Aus),0,0
-Honduras,6,0
+Honduras,0,0
 Hong Kong (Ch),0,0
-Hungary,2,0
+Hungary,0,0
 Iceland,0,0
-Indonesia,18567,931
-Iran,23,0
-Iraq,10156,1478
-Ireland,102,0
+Indonesia,30,2
+Iran,0,0
+Iraq,27,4
+Ireland,0,0
 Isla Brasilera (disp),0,0
-Kazakhstan,0,13
-Kenya,111168,19571
+Kazakhstan,0,0
+Kenya,220,45
 Kiribati,0,0
-"Korea, North",1,0
-"Korea, South",1,0
+"Korea, North",0,0
+"Korea, South",0,0
 Kosovo,0,0
-Serbia,1,0
+Serbia,0,0
 Seychelles,0,0
 Siachen-Saltoro (disp),0,0
-Sierra Leone,60973,13780
+Sierra Leone,101,51
 Singapore,0,0
 Isle of Man (UK),0,0
-Italy,4,0
-Jamaica,7701,757
+Italy,0,0
+Jamaica,16,6
 Jan Mayen (Nor),0,0
-Japan,1214,14
+Japan,5,0
 Koualou (disp),0,0
 Kyrgyzstan,0,0
-Laos,241,492
+Laos,0,0
 Latvia,0,0
 Lebanon,0,0
-Lesotho,1,3
+Lesotho,0,0
 Liancourt Rocks (disp),0,0
-Liberia,9019,1290
-Libya,3348,288
+Liberia,11,2
+Libya,8,0
 Liechtenstein,0,0
 Lithuania,0,0
-Luxembourg,2,0
+Luxembourg,0,0
 Monaco,0,0
-Mongolia,6,2
+Mongolia,0,0
 Montenegro,0,0
 Macau (Ch),0,0
-Macedonia,9,0
-Madagascar,8705,322
-Malawi,192546,17538
-Malaysia,1,6
+Macedonia,0,0
+Madagascar,23,1
+Malawi,309,66
+Malaysia,0,0
 Maldives,0,0
-Mali,8387,65
+Mali,7,1
 Malta,0,0
 Marshall Is,0,0
 Martinique (Fr),0,0
-Mauritania,3,0
-Mauritius,48,1
+Mauritania,0,0
+Mauritius,0,0
 Mayotte (Fr),0,0
-Mexico,50,32
+Mexico,0,0
 "Micronesia, Fed States of",0,0
-Moldova,29,0
-Netherlands [Caribbean],574,22
+Moldova,0,0
+Netherlands [Caribbean],1,0
 New Caledonia (Fr),0,0
 New Zealand,0,0
-Nicaragua,1151,53
+Nicaragua,4,0
 Niue (NZ),0,0
 No Man's Land (disp),0,0
 Norfolk I (Aus),0,0
 Northern Mariana Is (US),0,0
 Norway,0,0
-Oman,3,0
-Pakistan,0,3
+Oman,0,0
+Pakistan,0,0
 Palau,0,0
 Panama,0,0
-Papua New Guinea,121,11
+Papua New Guinea,0,0
 Paracel Is (disp),0,0
 Paraguay,0,0
-Peru,54132,2249
-Philippines,138632,6638
+Peru,57,3
+Philippines,308,32
 Pitcairn Is (UK),0,0
-Poland,49,4
-Portugal,0,22
+Poland,0,0
+Portugal,0,0
 Portugal [Azores],0,0
 Portugal [Madeira Is],0,0
-Puerto Rico (US),49,20
+Puerto Rico (US),0,0
 Reunion (Fr),0,0
-Romania,20,0
+Romania,0,0
 Russia,0,0
-Rwanda,644,316
+Rwanda,0,1
 S Georgia & S Sandwich Is (UK),0,0
-Samoa,69,4
+Samoa,0,0
 San Marino,0,0
 Tokelau (NZ),0,0
 Tonga,0,0
-Trinidad & Tobago,24,0
-Tunisia,15,4
-Turkmenistan,39,25
+Trinidad & Tobago,0,0
+Tunisia,0,0
+Turkmenistan,0,0
 Sanafir & Tiran Is. (disp),0,0
 Sao Tome & Principe,0,0
-Saudi Arabia,2,0
-Senegal,5794,1049
+Saudi Arabia,0,0
+Senegal,13,1
 Senkakus (disp),0,0
 Sint Maarten (Neth),0,0
 Slovakia,0,0
-Slovenia,3,0
+Slovenia,0,0
 Solomon Is,0,0
-Somalia,597,258
-South Africa,39729,832
-South Sudan,21142,1775
-Spain,0,2
+Somalia,0,0
+South Africa,95,1
+South Sudan,81,13
+Spain,0,0
 Spain [Canary Is],0,0
 Spain [Plazas de Soberania],0,0
 Spratly Is (disp),0,0
-Sri Lanka,192017,5637
+Sri Lanka,431,24
 St Barthelemy (Fr),0,0
 St Helena (UK),0,0
 Turks & Caicos Is (UK),0,0
@@ -233,48 +233,48 @@ St Lucia,0,0
 St Martin (Fr),0,0
 St Pierre & Miquelon (Fr),0,0
 St Vincent & the Grenadines,0,0
-Sudan,13,0
+Sudan,0,0
 Suriname,0,0
 Svalbard (Nor),0,0
 Swaziland,0,0
-Sweden,13,56
-Switzerland,6,3
-Syria,18,2
-Taiwan,15,0
-Tajikistan,45,0
-Tanzania,91988,17043
-Thailand,2,2
+Sweden,0,0
+Switzerland,0,0
+Syria,0,0
+Taiwan,0,0
+Tajikistan,1,0
+Tanzania,180,64
+Thailand,0,0
 Timor-Leste,0,0
-Togo,9487,648
+Togo,29,5
 Tuvalu,0,0
-Uganda,409478,39762
-United Kingdom,45,19
-United States,3201,113
-Uruguay,3,0
+Uganda,809,176
+United Kingdom,0,0
+United States,1,1
+Uruguay,0,0
 US Minor Pacific Is. Refuges (US),0,0
 US Virgin Is (US),0,0
-Uzbekistan,1,3
+Uzbekistan,0,0
 Vanuatu,0,0
 Vatican City,0,0
-Venezuela,4,16
-Vietnam,8683,337
+Venezuela,0,0
+Vietnam,27,0
 Wake I (US),0,0
 Wallis & Futuna (Fr),0,0
 West Bank (disp),0,0
 Western Sahara (disp),0,0
-Zambia,427,13
-Zimbabwe,3628,10
-Yemen,16,4
-Ukraine,1641,536
+Zambia,0,0
+Zimbabwe,1,0
+Yemen,0,1
+Ukraine,2,1
 Bahrain,0,0
 Kuwait,0,0
 Qatar,0,0
-United Arab Emirates,3,0
-Turkey,5,6
-Israel,5,3
-Bangladesh,20310,3005
-Burma,203816,8171
-India,344,37
-Benin,62597,7252
-Niger,12669,943
-Nigeria,468,56
+United Arab Emirates,0,0
+Turkey,0,0
+Israel,0,0
+Bangladesh,24,13
+Burma,452,25
+India,0,0
+Benin,81,17
+Niger,9,1
+Nigeria,2,0
