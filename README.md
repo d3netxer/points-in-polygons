@@ -23,7 +23,7 @@ This link (https://blog.bekt.net/p/docker-aws-credentials/) suggested for develo
 This example command mounts the ~/.aws directory AND set the $HOME environment variable, mounts the code directory so that the changes are reflected live without having to rebuild the docker image, and opens the bash shell:
 
 ```
-$ sudo docker run -it -e "HOME=/home" -v $HOME/.aws:/home/.aws -v "$PWD:/opt" points-in-polygons-image /bin/bash
+$ sudo docker run -it -e "HOME=/home" -v $HOME/.aws:/home/.aws -v "$PWD/data:/opt/data" -v $PWD:/opt/ points-in-polygons-image /bin/bash
 ```
 
 now once you are inside the docker container you can run the script manually:
