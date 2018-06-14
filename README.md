@@ -45,7 +45,7 @@ Then you may need to log out and back in.
 
 Edit your crontab file with this command:   ```crontab -e```
 
-and add this line to itL
+and add this line to it.
 ```
 @reboot sh /opt/points-in-polygons/startup_script.sh
 ```
