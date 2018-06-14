@@ -13,7 +13,6 @@ from pathlib2 import Path
 
 import sys
 
-
 def main(args=None):
 
 	num_procs = mp.cpu_count()
@@ -21,7 +20,56 @@ def main(args=None):
 	print num_procs
 	t1=time.time()
 
-	d = pd.read_csv("test_usernames.csv", delimiter=",", usecols=["building_or_hwy","lat","lon","user","timestamp"])
+        BUCKET_NAME="aws-athena-mapgive-query-results"
+
+        s3 = boto3.resource('s3')
+        s3_client = boto3.client('s3')
+        get_last_modified = lambda obj: int(obj['LastModified'].strftime('%s'))
+
+        objs = s3_client.list_objects_v2(Bucket=BUCKET_NAME)['Contents']
+        obj_key_list = [obj['Key'] for obj in sorted(objs, key=get_last_modified, reverse=True)]
+
+        #find the first entry in obj_key_list that ends with 'csv'
+        for name in obj_key_list:
+            print(name)
+            if name.endswith('.csv'):
+                KEY = name
+                print(KEY)
+                break
+
+        print('print obj_key_list')
+        print(obj_key_list)
+
+        #exit early for testing purposes
+        #sys.exit()
+
+        #if testing script, don't download file if it exists locally
+        #my_file1 = Path("/opt/my_local_csv.csv")
+
+        #if not my_file1.is_file():
+
+        try:
+            s3.Bucket(BUCKET_NAME).download_file(KEY, 'my_local_csv.csv')
+        except botocore.exceptions.ClientError as e:
+            if e.response['Error']['Code'] == "404":
+                print("The object does not exist.")
+            else:
+                raise
+
+        print 'finished downloading mapgive features file'
+
+        print 'print KEY'
+        print KEY
+
+        file_date = KEY.split("/");
+        file_date = file_date[0]
+
+        print 'print file_date'
+        print file_date
+
+        #sys.exit()
+
+	d = pd.read_csv("my_local_csv.csv", delimiter=",", usecols=["building_or_hwy","lat","lon","user","timestamp"])
 
 	# https://gis.stackexchange.com/questions/174159/convert-a-pandas-dataframe-to-a-geodataframe
 	geometry = [Point(xy) for xy in zip(d.lon, d.lat)]
@@ -62,11 +110,42 @@ def main(args=None):
 	# rename columns
 	merged_df = merged_df.rename(index=str, columns={"COUNTRY_NA": "country_name", "user": "unique_users", "building": "building_count", "highway": "highway_count"})
 
+
+        file_name = '%s-mapgive-metrics.csv' % file_date
+
+        print('file name is:')
+        print(file_name)
+
 	# save to csv
-	merged_df.to_csv('mapgive_metrics_test4.csv', columns=["country_name","datetime","unique_users","building_count","highway_count"])
+	merged_df.to_csv("/opt/data/%s" % file_name, columns=["country_name","datetime","unique_users","building_count","highway_count"])
 	
 	print("Processing time took:",time.time()-t1)
 
+        KEY="/opt/data/%s" % file_name
+        BUCKET_NAME="mapgive-metrics"
+
+        print('printing KEY')
+        print KEY
+
+        # don't upload file if it exists
+        # my_file2 = Path("/opt/data/mapgive_metrics.csv")
+        # my_file2 = Path(KEY)
+
+        # if not my_file2.is_file():
+
+        try:
+            s3.Bucket(BUCKET_NAME).upload_file(KEY,file_name)
+            object_acl = s3.ObjectAcl('mapgive-metrics',file_name)
+            response = object_acl.put(ACL='public-read')     
+        except botocore.exceptions.ClientError as e:
+            if e.response['Error']['Code'] == "404":
+                print("The object does not exist.")
+        else:
+            print('exception raised')
+            #raise
+
+        print 'finished uploading mapgive metrics to s3'
+
 if __name__ == "__main__":
-	main()
+    main()
 
