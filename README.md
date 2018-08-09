@@ -5,7 +5,7 @@ Tested with Ubuntu 16.04. This app is built using docker.
 ## Dependencies
 
 ### Install Docker CE for Ubuntu:
-https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce-1
+https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
 ### Install AWS CLI:
 #### Install PIP: ```sudo apt install python-pip```
