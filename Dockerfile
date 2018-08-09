@@ -1,8 +1,8 @@
 FROM python:2.7
 
-WORKDIR /opt/points-in-polygons
+WORKDIR /opt/
 
-COPY requirements.txt /opt/points-in-polygons/requirements.txt
+COPY requirements.txt requirements.txt
 #COPY . /opt
 RUN pip install -r requirements.txt && apt-get update && apt-get install -y \
     libspatialindex-dev
@@ -11,5 +11,5 @@ RUN pip install -r requirements.txt && apt-get update && apt-get install -y \
 
 #CMD [ "python", "/opt/pointsinpolygons.py" ]
 
-CMD [ "python", "/opt/points-in-polygons/time_pointsinpolygons.py" ]
+CMD [ "python", "/opt/time_pointsinpolygons.py" ]
 
