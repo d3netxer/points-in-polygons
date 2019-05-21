@@ -1,6 +1,6 @@
 # points-in-polygons
 
-Tested with Ubuntu 16.04. This app is built using docker.
+The backend metrics aggregator used for the MapGive dashboard. Tested with Ubuntu 16.04. This app is built using docker.
 
 ## Dependencies
 
