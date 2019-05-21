@@ -29,16 +29,42 @@ def main(args=None):
         objs = s3_client.list_objects_v2(Bucket=BUCKET_NAME)['Contents']
         obj_key_list = [obj['Key'] for obj in sorted(objs, key=get_last_modified, reverse=True)]
 
-        #find the first entry in obj_key_list that ends with 'csv'
-        for name in obj_key_list:
-            print(name)
-            if name.endswith('.csv'):
-                KEY = name
-                print(KEY)
-                break
+        print('print obj_key_list[0]')
+        print(obj_key_list[0])
 
-        print('print obj_key_list')
-        print(obj_key_list)
+
+
+        #find the first entry in obj_key_list that ends with 'csv'
+        
+        #get most recent date
+        
+
+        most_recent_date = obj_key_list[0].split("/");
+        most_recent_date = most_recent_date[0]
+
+        print('most recent date')
+        print(most_recent_date)
+
+        KEYS = []
+
+        for name in obj_key_list:
+            #print(name)
+            if name.endswith('.csv'):
+                print(name)
+                print('print name split')
+                print(name.split("/"))
+                if name.split("/")[0] == most_recent_date:
+                    KEY = name
+                    print(KEY)
+                    #break
+                    KEYS.append(KEY)
+
+
+        print('print KEYS')
+        print(KEYS)
+
+        #print('print obj_key_list')
+        #print(obj_key_list)
 
         #exit early for testing purposes
         #sys.exit()
@@ -48,28 +74,41 @@ def main(args=None):
 
         #if not my_file1.is_file():
 
-        try:
-            s3.Bucket(BUCKET_NAME).download_file(KEY, 'my_local_csv.csv')
-        except botocore.exceptions.ClientError as e:
-            if e.response['Error']['Code'] == "404":
-                print("The object does not exist.")
-            else:
-                raise
+        dataframe_list = []
 
-        print 'finished downloading mapgive features file'
+        for num,KEY in enumerate(KEYS,start=1):
+            try:
+                 s3.Bucket(BUCKET_NAME).download_file(KEY, 'my_local_csv.csv')
+            except botocore.exceptions.ClientError as e:
+                 if e.response['Error']['Code'] == "404":
+                     print("The object does not exist.")
+                 else:
+                     raise
 
-        print 'print KEY'
-        print KEY
+            print("finished downloading mapgive features file {}".format(num))
 
-        file_date = KEY.split("/");
-        file_date = file_date[0]
+            print('print KEY')
+            print(KEY)
 
-        print 'print file_date'
-        print file_date
+            file_date = KEY.split("/");
+            file_date = file_date[0]
 
-        #sys.exit()
+            print 'print file_date'
+            print file_date
+            #sys.exit()
 
-	d = pd.read_csv("my_local_csv.csv", delimiter=",", usecols=["building_or_hwy","lat","lon","user","timestamp"])
+	    d = pd.read_csv("my_local_csv.csv", delimiter=",", usecols=["building_or_hwy","lat","lon","user","timestamp"])
+
+            dataframe_list.append(d)
+
+        for i in dataframe_list:
+            print('print dataframe length')
+            print(len(i))
+
+        d = pd.concat(dataframe_list)
+
+        print("print combined dataframe list")
+        print(len(d))
 
 	# https://gis.stackexchange.com/questions/174159/convert-a-pandas-dataframe-to-a-geodataframe
 	geometry = [Point(xy) for xy in zip(d.lon, d.lat)]
