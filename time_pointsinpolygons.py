@@ -26,8 +26,18 @@ def main(args=None):
         s3_client = boto3.client('s3')
         get_last_modified = lambda obj: int(obj['LastModified'].strftime('%s'))
 
-        objs = s3_client.list_objects_v2(Bucket=BUCKET_NAME)['Contents']
-        obj_key_list = [obj['Key'] for obj in sorted(objs, key=get_last_modified, reverse=True)]
+        #objs = s3_client.list_objects_v2(Bucket=BUCKET_NAME)['Contents']
+        #obj_key_list = [obj['Key'] for obj in sorted(objs, key=get_last_modified, reverse=True)]
+
+	paginator = s3_client.get_paginator('list_objects_v2')
+	pages = paginator.paginate(Bucket=BUCKET_NAME)
+
+	obj_key_list = []
+	for page in pages:
+		for obj in page['Contents']:
+			obj_key_list.append(obj)
+
+	obj_key_list = [obj['Key'] for obj in sorted(obj_key_list, key=get_last_modified, reverse=True)]
 
         print('print obj_key_list[0]')
         print(obj_key_list[0])
